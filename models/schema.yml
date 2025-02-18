@@ -1,0 +1,18 @@
+# scheam.yml
+
+vesion: 2
+sources:
+    - name: raw_data #reneommer le nom du data-set
+      schema: gz_raw_data #où se situe le dataset
+      description: source de données brutes greenweez
+      tables:
+
+        - name: sales
+          identifier: raw_gz_sales #nom exact de la table dans BQ
+          description: sales of greenweez / nous avons un ligne par product_id pour chaque order_id
+        - name: product
+          identifier: raw_gz_product
+          description: products of greenweez / purchase price by products_id
+        - name: ship
+          identifier: raw_gz_ship
+          description: ship fee and cost by orders_id (pk)
