@@ -2,7 +2,7 @@
 
 vesion: 2
 sources:
-    - name: raw_data #reneommer le nom du data-set
+    - name: raw #reneommer le nom du data-set
       schema: gz_raw_data #où se situe le dataset
       description: source de données brutes greenweez
       tables:
