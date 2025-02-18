@@ -1,6 +1,7 @@
 # scheam.yml
 
-vesion: 2
+version: 2
+
 sources:
     - name: raw #reneommer le nom du data-set
       schema: gz_raw_data #où se situe le dataset
@@ -10,9 +11,53 @@ sources:
         - name: sales
           identifier: raw_gz_sales #nom exact de la table dans BQ
           description: sales of greenweez / nous avons un ligne par product_id pour chaque order_id
+
+          #Freshness testing - make sure to fill in the 
+          loaded_at_field: "CAST(date_date AS TIMESTAMP)" #AS date_date
+          freshness: 
+            warn_after: {count: 90, period: day} #Erreur si plus de 90 jours
+
+          columns:
+            - name: date_date
+              description: date of purchase
+            - name: orders_id
+              description: id de chaque order acheté
+            - name: pdt_id
+              description: id de chaque produit acheté
+            - name: revenue
+              description: revenue de chaque produit/order acheté
+            - name: quantity
+              description: quantité achetée
+            - name: "(orders_id || '-' || pdt_id)"
+              description: primary key of the table
+              tests:
+                - unique
+                - not_null
         - name: product
           identifier: raw_gz_product
           description: products of greenweez / purchase price by products_id
+          columns:
+            - name: products_id
+              description: primary key of the table
+              tests:
+                - unique
+                - not_null 
+            - name: purchSE_PRICE
+              description: prix unitaire pour chaque produit
         - name: ship
           identifier: raw_gz_ship
           description: ship fee and cost by orders_id (pk)
+          columns:
+            - name: orders_id
+              description: primary key of the table
+              tests:
+                - unique
+                - not_null
+            - name: shipping_fee
+              description: frais de transport payé par les clients
+            - name: shipping_fee_1
+              description: duplicatat de shipping fee 
+            - name: logCost
+              description: coût logistique de chaque order
+            - name: ship_cost
+              description: prix de transport pour chaque order
