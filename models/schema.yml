@@ -194,7 +194,7 @@ models:
         description: frais de transport par jour
         tests:
           - not_null
-      - name: log_cost
+      - name: total_log_cost
         description: frais de logistique par jour
         tests:
           - not_null
