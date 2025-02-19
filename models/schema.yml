@@ -61,6 +61,19 @@ sources:
               description: coût logistique de chaque order
             - name: ship_cost
               description: prix de transport pour chaque order
+        - name: adwords
+          identifier: raw_gz_adwords
+          description: résultats de la campagne marketing Adwords
+        - name: bing
+          identifier: raw_gz_bing
+          description: résultats de la campagne marketing sur Bing
+        - name: criteo
+          identifier: raw_gz_criteo
+          description: résultats de la campagne marketing sur Criteo
+        - name: facebook
+          identifier: raw_gz_facebook
+          description: résultats de la campagne marketing sur Facebook
+
 
 models:
   - name: int_sales_margin
