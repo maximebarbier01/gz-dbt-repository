@@ -11,6 +11,6 @@ SELECT
     ,ROUND(sum(log_cost),2) AS total_log_cost
     ,ROUND(SUM(ship_cost),2) AS ship_cost
     ,SUM(quantity) AS total_pdt_sold
-FROM {{ ref('int_orders_operational_sol') }}
+FROM {{ ref('int_orders_operational') }}
 GROUP BY date_date
 ORDER BY date_date DESC
