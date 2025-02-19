@@ -89,6 +89,10 @@ sources:
               description: impression de la campagne
               tests:
                 - not_null
+            - name: click
+              description: clique de la campagne
+              tests:
+                - not_null
             - name: "(campaign_key || '-' || date_date)"
               description: clé primaire
               tests:
@@ -121,6 +125,10 @@ sources:
                 - not_null
             - name: impression
               description: impression de la campagne
+              tests:
+                - not_null
+            - name: click
+              description: clique de la campagne
               tests:
                 - not_null
             - name: "(campaign_key || '-' || date_date)"
@@ -157,6 +165,10 @@ sources:
               description: impression de la campagne
               tests:
                 - not_null
+            - name: click
+              description: clique de la campagne
+              tests:
+                - not_null
             - name: "(campaign_key || '-' || date_date)"
               description: clé primaire
               tests:
@@ -189,6 +201,10 @@ sources:
                 - not_null
             - name: impression
               description: impression de la campagne
+              tests:
+                - not_null
+            - name: click
+              description: clique de la campagne
               tests:
                 - not_null
             - name: "(campaign_key || '-' || date_date)"
@@ -313,7 +329,7 @@ models:
         description: panier moyen par jour
         tests:
           - not_null
-          - name: average_basket_bis
+      - name: average_basket_bis
         description: panier moyen par jour bis
         tests:
           - not_null
@@ -341,7 +357,7 @@ models:
         description: nombre total de produits venus par jour
         tests:
           - not_null
-          
+
 #Marketing Campaign
   - name: int_campaigns_day
     description: résultats de la campagne par jour
@@ -350,6 +366,7 @@ models:
         description: date de la campagn
         tests:
          - not_null
+         - unique
       - name: ads_cost
         description: coût de la campagne
         tests:
@@ -362,7 +379,61 @@ models:
         description: clique total de la campagne
         tests:
          - not_null
-      - name: "(campaign_key || '-' || date_date)"
-        description: clé primaire
+
+  #Finance marketing report
+  - name: campaign_campaigns_day
+    description: mart model pour la finance
+    columns:
+      - name: date_date
+        description: primary key 
         tests:
           - unique
+          - not_null
+      - name: ads_margin
+        description: marge après campagne
+        tests:
+          - not_null
+      - name: average_basket
+        description: panier moyen par jour
+        tests:
+          - not_null
+      - name: operational_margin
+        description: marge opérationnel par jour
+        tests:
+          - not_null
+      - name: ads_cost
+        description: prix des campagnes par jour
+        tests:
+          - not_null
+      - name: ads_impression
+        description: nombre d'impression des campagnes par jour
+        tests:
+          - not_null
+      - name: ads_clicks
+        description: nombre de cliques des campagnes par jour
+        tests:
+          - not_null
+      - name: total_pdt_sold
+        description: nombre total de produits venus par jour
+        tests:
+          - not_null
+      - name: purchase_cost
+        description: coût total par jour
+        tests:
+          - not_null
+      - name: margin
+        description: marge total par jour
+        tests:
+          - not_null
+      - name: shipping_fee
+        description: frais de transport pour les clients par jour
+        tests:
+          - not_null
+      - name: log_cost
+        description: frais de logistique par jour
+        tests:
+          - not_null
+      - name: ship_cost
+        description: frais de transport pour Greenweez par jour
+        tests:
+          - not_null
