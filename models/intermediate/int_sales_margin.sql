@@ -9,5 +9,5 @@ USING (products_id)
 )
 SELECT 
     *
-    ,{{margin_percent('margin','revenue')}} AS margin_percent
+    ,{{margin_percent('purchase_cost','revenue')}} AS margin_percent
 FROM m_sub

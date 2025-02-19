@@ -1,5 +1,5 @@
 select
-    FORMAT_DATE("%Y/%m/%d", DATE_TRUNC(date_date, MONTH)) AS datemonth
+    DATE_TRUNC(date_date, MONTH) AS datemonth
     ,ROUND(SUM(c.ads_margin),2) AS ads_margin
     ,ROUND(SUM(c.average_basket),2) AS average_basket
     ,ROUND(SUM(c.operational_margin),2) AS operational_margin
