@@ -64,16 +64,138 @@ sources:
         - name: adwords
           identifier: raw_gz_adwords
           description: résultats de la campagne marketing Adwords
+          columns:
+            - name: date_date
+              description: date de la campagn
+              tests:
+                - not_null
+            - name: paid_source
+              description: source de la campagn (Adwords, Facebook, etc)
+              tests:
+                - not_null
+            - name: campaign_key
+              description: clé de la campagne
+              tests:
+                - not_null
+            - name: camPGN_name
+              description: nom de la campagne
+              tests:
+                - not_null
+            - name: ads_cost
+              description: coût de la campagne
+              tests:
+                - not_null
+            - name: impression
+              description: impression de la campagne
+              tests:
+                - not_null
+            - name: "(campaign_key || '-' || date_date)"
+              description: clé primaire
+              tests:
+                - unique
+                - not_null
+          
         - name: bing
           identifier: raw_gz_bing
           description: résultats de la campagne marketing sur Bing
+          columns:
+            - name: date_date
+              description: date de la campagn
+              tests:
+                - not_null
+            - name: paid_source
+              description: source de la campagn (Adwords, Facebook, etc)
+              tests:
+                - not_null
+            - name: campaign_key
+              description: clé de la campagne
+              tests:
+                - not_null
+            - name: camPGN_name
+              description: nom de la campagne
+              tests:
+                - not_null
+            - name: ads_cost
+              description: coût de la campagne
+              tests:
+                - not_null
+            - name: impression
+              description: impression de la campagne
+              tests:
+                - not_null
+            - name: "(campaign_key || '-' || date_date)"
+              description: clé primaire
+              tests:
+                - unique
+                - not_null
+
         - name: criteo
           identifier: raw_gz_criteo
           description: résultats de la campagne marketing sur Criteo
+          columns:
+            - name: date_date
+              description: date de la campagn
+              tests:
+                - not_null
+            - name: paid_source
+              description: source de la campagn (Adwords, Facebook, etc)
+              tests:
+                - not_null
+            - name: campaign_key
+              description: clé de la campagne
+              tests:
+                - not_null
+            - name: camPGN_name
+              description: nom de la campagne
+              tests:
+                - not_null
+            - name: ads_cost
+              description: coût de la campagne
+              tests:
+                - not_null
+            - name: impression
+              description: impression de la campagne
+              tests:
+                - not_null
+            - name: "(campaign_key || '-' || date_date)"
+              description: clé primaire
+              tests:
+                - unique
+                - not_null
+
         - name: facebook
           identifier: raw_gz_facebook
           description: résultats de la campagne marketing sur Facebook
-
+          columns:
+            - name: date_date
+              description: date de la campagn
+              tests:
+                - not_null
+            - name: paid_source
+              description: source de la campagn (Adwords, Facebook, etc)
+              tests:
+                - not_null
+            - name: campaign_key
+              description: clé de la campagne
+              tests:
+                - not_null
+            - name: camPGN_name
+              description: nom de la campagne
+              tests:
+                - not_null
+            - name: ads_cost
+              description: coût de la campagne
+              tests:
+                - not_null
+            - name: impression
+              description: impression de la campagne
+              tests:
+                - not_null
+            - name: "(campaign_key || '-' || date_date)"
+              description: clé primaire
+              tests:
+                - unique
+                - not_null
 
 models:
   - name: int_sales_margin
@@ -219,4 +341,28 @@ models:
         description: nombre total de produits venus par jour
         tests:
           - not_null
-        
+          
+#Marketing Campaign
+  - name: int_campaigns_day
+    description: résultats de la campagne par jour
+    columns:
+      - name: date_date
+        description: date de la campagn
+        tests:
+         - not_null
+      - name: ads_cost
+        description: coût de la campagne
+        tests:
+         - not_null
+      - name: ads_impression
+        description: impression de la campagne
+        tests:
+         - not_null
+      - name: ads_clicks
+        description: clique total de la campagne
+        tests:
+         - not_null
+      - name: "(campaign_key || '-' || date_date)"
+        description: clé primaire
+        tests:
+          - unique
