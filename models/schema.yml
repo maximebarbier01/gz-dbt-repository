@@ -157,7 +157,7 @@ models:
         description: quantité total vendue par order
         tests:
           - not_null
-  #Financial days report
+  #Finance days report
   - name: finance_days
     description: mart model pour la finance
     columns:
@@ -176,6 +176,10 @@ models:
           - not_null
       - name: average_basket
         description: panier moyen par jour
+        tests:
+          - not_null
+          - name: average_basket_bis
+        description: panier moyen par jour bis
         tests:
           - not_null
       - name: margin
